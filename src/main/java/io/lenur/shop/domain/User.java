@@ -1,6 +1,6 @@
 package io.lenur.shop.domain;
 
-public class User {
+public class User implements Identifiable {
     private Long id;
     private String name;
     private String email;

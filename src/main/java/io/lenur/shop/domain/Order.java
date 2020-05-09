@@ -2,7 +2,7 @@ package io.lenur.shop.domain;
 
 import java.util.List;
 
-public class Order {
+public class Order implements Identifiable {
     private Long id;
     private List<Product> products;
     private User user;

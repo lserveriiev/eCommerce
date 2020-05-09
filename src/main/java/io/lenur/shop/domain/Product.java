@@ -1,6 +1,6 @@
 package io.lenur.shop.domain;
 
-public class Product {
+public class Product implements Identifiable {
     private Long id;
     private String name;
     private double price;
