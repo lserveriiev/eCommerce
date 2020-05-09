@@ -2,9 +2,11 @@ package io.lenur.shop;
 
 import io.lenur.di.Dependency;
 import io.lenur.di.PackageContext;
+import io.lenur.shop.domain.Cart;
 import io.lenur.shop.domain.Order;
 import io.lenur.shop.domain.Product;
 import io.lenur.shop.domain.User;
+import io.lenur.shop.service.CartService;
 import io.lenur.shop.service.OrderService;
 import io.lenur.shop.service.ProductService;
 import io.lenur.shop.service.UserService;
@@ -43,8 +45,8 @@ public class Application {
         ////---- ORDER ----////
         OrderService<Order> orderService = (OrderService<Order>) packageContext.getInstance(OrderService.class);
         Order order1 = new Order(Arrays.asList(product1Persisted), user1Persisted);
-        System.out.println(productService.get(1L));//null
-        System.out.println(productService.getAll());//[]
+        System.out.println(orderService.get(1L));//null
+        System.out.println(orderService.getAll());//[]
 
         Order order1Persisted = orderService.create(order1);
         //Order{
@@ -53,5 +55,19 @@ public class Application {
         // user=User{id=1, name='user', email='user1@example.com', password='password'}
         // }
         System.out.println(orderService.get(order1Persisted.getId()));
+
+        ////---- CART ----////
+        CartService<Cart> cartService = (CartService<Cart>) packageContext.getInstance(CartService.class);
+        Cart cart1 = new Cart(Arrays.asList(product1Persisted), user1Persisted);
+        System.out.println(cartService.get(1L));//null
+        System.out.println(cartService.getAll());//[]
+
+        Cart cart1Persisted = cartService.create(cart1);
+        //Order{
+        // id=1,
+        // products=[Product{id=1, name='product1', price=22.0}],
+        // user=User{id=1, name='user', email='user1@example.com', password='password'}
+        // }
+        System.out.println(cartService.get(cart1Persisted.getId()));
     }
 }

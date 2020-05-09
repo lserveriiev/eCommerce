@@ -38,4 +38,13 @@ public class Cart {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", products=" + products +
+                ", user=" + user +
+                '}';
+    }
 }
