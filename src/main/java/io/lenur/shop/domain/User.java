@@ -1,5 +1,7 @@
 package io.lenur.shop.domain;
 
+import java.util.Objects;
+
 public class User implements Identifiable {
     private Long id;
     private String name;
@@ -55,5 +57,29 @@ public class User implements Identifiable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, password);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        User user = (User) obj;
+
+        return Objects.equals(user.id, id)
+                && Objects.equals(user.name, name)
+                && Objects.equals(user.password, password)
+                && Objects.equals(user.email, email);
     }
 }

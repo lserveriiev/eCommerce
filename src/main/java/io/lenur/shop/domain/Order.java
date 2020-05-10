@@ -1,6 +1,7 @@
 package io.lenur.shop.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Order implements Identifiable {
     private Long id;
@@ -46,5 +47,27 @@ public class Order implements Identifiable {
                 ", products=" + products +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, products, user);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Order order = (Order) obj;
+
+        return Objects.equals(order.id, id)
+                && Objects.equals(order.products, products)
+                && Objects.equals(order.user, user);
     }
 }

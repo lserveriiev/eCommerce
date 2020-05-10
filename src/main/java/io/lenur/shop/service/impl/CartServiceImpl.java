@@ -54,7 +54,14 @@ public class CartServiceImpl implements CartService {
     public Cart getByUserId(final Long userId) {
         Optional<Cart> cart = cartDao.getByUserId(userId);
 
-        return cart.orElse(new Cart(new ArrayList<>(), userService.get(userId)));
+        if (cart.isPresent()) {
+            return cart.get();
+        }
+
+        User user = userService.get(userId);
+        Cart newCart = new Cart(new ArrayList<>(), user);
+
+        return create(newCart);
     }
 
     @Override

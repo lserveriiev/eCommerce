@@ -1,5 +1,7 @@
 package io.lenur.shop.domain;
 
+import java.util.Objects;
+
 public class Product implements Identifiable {
     private Long id;
     private String name;
@@ -44,5 +46,27 @@ public class Product implements Identifiable {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Product product = (Product) obj;
+
+        return Objects.equals(product.id, id)
+                && Objects.equals(product.name, name)
+                && Objects.equals(product.price, price);
     }
 }

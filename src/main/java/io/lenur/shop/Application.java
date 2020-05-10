@@ -17,16 +17,16 @@ public class Application {
     private static PackageContext packageContext = Dependency.init("io.lenur.shop");
 
     public static void main(String[] args) {
-        UserService<User> userService = (UserService<User>) packageContext.getInstance(UserService.class);
+        UserService<User> userService = (UserService) packageContext.getInstance(UserService.class);
         User user1 = new User("user", "user1@example.com", "password");
-//        System.out.println(userService.get(1L));//null
-//        System.out.println(userService.getAll());//[]
+        System.out.println(userService.get(1L));//null
+        System.out.println(userService.getAll());//[]
 //
-          User user1Persisted = userService.create(user1);
-//        System.out.println(userService.get(user1Persisted.getId()));//User{id=1, name='user', email='user1@example.com', password='password'}
-//        user1Persisted.setPassword("new password");
-//        System.out.println(userService.update(user1Persisted));//User{id=1, name='user', email='user1@example.com', password='new password'}
-//        userService.delete(user1Persisted.getId());
+        User user1Persisted = userService.create(user1);
+        System.out.println(userService.get(user1Persisted.getId()));//User{id=1, name='user', email='user1@example.com', password='password'}
+        user1Persisted.setPassword("new password");
+        System.out.println(userService.update(user1Persisted));//User{id=1, name='user', email='user1@example.com', password='new password'}
+        userService.delete(user1Persisted.getId());
 //        System.out.println(userService.get(1L));//null
 
 //        ////---- PRODUCT ----////
@@ -43,7 +43,7 @@ public class Application {
 //        System.out.println(productService.get(1L));//null
 
         ////---- ORDER ----////
-        OrderService<Order> orderService = (OrderService<Order>) packageContext.getInstance(OrderService.class);
+        OrderService orderService = (OrderService) packageContext.getInstance(OrderService.class);
         Order order1 = new Order(Arrays.asList(product1Persisted), user1Persisted);
         System.out.println(orderService.get(1L));//null
         System.out.println(orderService.getAll());//[]
@@ -57,10 +57,8 @@ public class Application {
         System.out.println(orderService.get(order1Persisted.getId()));
 
         ////---- CART ----////
-        CartService<Cart> cartService = (CartService<Cart>) packageContext.getInstance(CartService.class);
+        CartService cartService = (CartService) packageContext.getInstance(CartService.class);
         Cart cart1 = new Cart(Arrays.asList(product1Persisted), user1Persisted);
-        System.out.println(cartService.get(1L));//null
-        System.out.println(cartService.getAll());//[]
 
         Cart cart1Persisted = cartService.create(cart1);
         //Order{
@@ -68,6 +66,6 @@ public class Application {
         // products=[Product{id=1, name='product1', price=22.0}],
         // user=User{id=1, name='user', email='user1@example.com', password='password'}
         // }
-        System.out.println(cartService.get(cart1Persisted.getId()));
+       // System.out.println(cartService.get(cart1Persisted.getId()));
     }
 }
