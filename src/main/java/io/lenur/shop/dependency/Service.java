@@ -3,8 +3,6 @@ package io.lenur.shop.dependency;
 import io.lenur.di.annotation.Dependencies;
 import io.lenur.di.annotation.Instance;
 
-import io.lenur.shop.domain.Cart;
-import io.lenur.shop.domain.Order;
 import io.lenur.shop.domain.Product;
 import io.lenur.shop.domain.User;
 import io.lenur.shop.service.CartService;
@@ -29,12 +27,12 @@ public class Service {
     }
 
     @Instance
-    public CartService<Cart> getCartService() {
+    public CartService getCartService() {
         return new CartServiceImpl();
     }
 
     @Instance
-    public OrderService<Order> getOrderService() {
+    public OrderService getOrderService() {
         return new OrderServiceImpl();
     }
 }
