@@ -1,4 +1,4 @@
-package io.lenur.shop.dao;
+package io.lenur.shop.dao.impl;
 
 import io.lenur.shop.domain.Product;
 import io.lenur.shop.persistence.Storage;
@@ -8,7 +8,7 @@ import java.util.List;
 public class ProductDao extends AbstractDao<Product> {
     @Override
     public List<Product> getAll() {
-        return Storage.products;
+        return Storage.getProducts();
     }
 
     @Override
@@ -21,13 +21,17 @@ public class ProductDao extends AbstractDao<Product> {
     @Override
     public Product update(Product product) {
         int index = getIndex(product);
-        Storage.products.set(index, product);
+        List<Product> products = getAll();
+
+        products.set(index, product);
 
         return product;
     }
 
     @Override
     public boolean delete(Long id) {
-        return Storage.products.removeIf(x -> x.getId().equals(id));
+        List<Product> products = getAll();
+
+        return products.removeIf(x -> x.getId().equals(id));
     }
 }

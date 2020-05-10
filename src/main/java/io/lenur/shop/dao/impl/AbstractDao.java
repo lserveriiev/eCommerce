@@ -1,5 +1,6 @@
-package io.lenur.shop.dao;
+package io.lenur.shop.dao.impl;
 
+import io.lenur.shop.dao.Dao;
 import io.lenur.shop.domain.Identifiable;
 import io.lenur.shop.exception.ModelNotFoundException;
 
