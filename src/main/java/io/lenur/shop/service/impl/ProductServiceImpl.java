@@ -1,10 +1,9 @@
 package io.lenur.shop.service.impl;
 
 import io.lenur.di.annotation.Inject;
-import io.lenur.shop.dao.ProductDao;
+import io.lenur.shop.dao.impl.ProductDao;
 import io.lenur.shop.domain.Product;
 import io.lenur.shop.exception.ModelNotFoundException;
-import io.lenur.shop.service.OrderService;
 import io.lenur.shop.service.ProductService;
 
 import java.util.Collections;

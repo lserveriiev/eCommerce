@@ -1,7 +1,7 @@
 package io.lenur.shop.service.impl;
 
 import io.lenur.di.annotation.Inject;
-import io.lenur.shop.dao.UserDao;
+import io.lenur.shop.dao.impl.UserDao;
 import io.lenur.shop.domain.User;
 import io.lenur.shop.exception.ModelNotFoundException;
 import io.lenur.shop.service.UserService;
