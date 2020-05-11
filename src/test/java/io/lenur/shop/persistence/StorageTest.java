@@ -54,4 +54,12 @@ public class StorageTest {
         Assert.assertEquals(1, users.size());
         Assert.assertEquals(user, userPersisted);
     }
+
+    @After
+    public void clearStorage() {
+        Storage.getCarts().clear();
+        Storage.getOrders().clear();
+        Storage.getProducts().clear();
+        Storage.getUsers().clear();
+    }
 }

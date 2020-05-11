@@ -39,7 +39,9 @@ public class CartServiceImpl implements CartService {
         List<Product> products = cart.getProducts();
 
         boolean result = products.removeIf(x -> x.getId().equals(product.getId()));
-        cartDao.update(cart);
+        if (result) {
+            cartDao.update(cart);
+        }
 
         return result;
     }
