@@ -7,6 +7,7 @@
     <groupId>io.lenur</groupId>
     <artifactId>shop</artifactId>
     <version>1.0</version>
+    <packaging>war</packaging>
 
     <properties>
         <jdk.version>11</jdk.version>
@@ -23,6 +24,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.serveriev</groupId>
             <artifactId>dependency-injection</artifactId>
             <version>v1.1</version>
@@ -34,7 +41,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
+        <finalName>shop</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -47,8 +56,14 @@
                         <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
